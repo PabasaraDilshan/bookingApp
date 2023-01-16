@@ -7,13 +7,15 @@ import {
   faTaxi,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
+import React, { useState } from "react";
 import { DateRange } from "react-date-range";
 import { format } from "date-fns";
 import "./header.css";
 import "react-date-range/dist/styles.css"; // main css file
 import "react-date-range/dist/theme/default.css"; // theme css file
+import { useNavigate } from "react-router-dom";
 const Header: React.FC<{ type?: string }> = ({ type }) => {
+  const [destination, setDestination] = useState("");
   const [dateRange, setDateRange] = React.useState<Range | any>([
     {
       startDate: new Date(),
@@ -41,46 +43,11 @@ const Header: React.FC<{ type?: string }> = ({ type }) => {
       };
     });
   };
+  const navigate = useNavigate();
+  const handleSearch = () => {
+    navigate("/hotels", { state: {destination,dateRange,options} });
+  };
 
-  //   const handleOption = (option: string, t: string) => {
-  //     switch (option) {
-  //       case "adults":
-  //         if (t === "+") {
-  //           setOptions((op) => {
-  //             return { ...op, adults:  op.adults + 1 };
-  //           });
-  //         } else {
-  //           setOptions((op) => {
-  //             return { ...op, adults: op.adults > 0 ? op.adults - 1 : 0 };
-  //           });
-  //         }
-  //         break;
-  //       case "children":
-  //         if (t === "+") {
-  //           setOptions((op) => {
-  //             return { ...op, children:  op.children + 1 };
-  //           });
-  //         } else {
-  //           setOptions((op) => {
-  //             return { ...op, children: op.children > 0 ? op.children - 1 : 0 };
-  //           });
-  //         }
-  //         break;
-  //       case "rooms":
-  //         if (t === "+") {
-  //           setOptions((op) => {
-  //             return { ...op, rooms: op.rooms + 1  };
-  //           });
-  //         } else {
-  //             setOptions((op) => {
-  //                 return { ...op, rooms: op.rooms > 0 ? op.rooms - 1 : 0 };
-  //               });
-  //         }
-  //         break;
-  //       default:
-  //         break;
-  //     }
-  //   };
   return (
     <div className="header">
       <div
@@ -127,6 +94,7 @@ const Header: React.FC<{ type?: string }> = ({ type }) => {
                   type="text"
                   placeholder="Where are you going"
                   className="headerSearchInput"
+                  onChange={(e) => setDestination(e.target.value)}
                 />
               </div>
               <div className="headerSearchItem">
@@ -147,6 +115,7 @@ const Header: React.FC<{ type?: string }> = ({ type }) => {
                     moveRangeOnFirstSelection={false}
                     ranges={dateRange}
                     className="dateRange"
+                    minDate={new Date()}
                   />
                 )}
               </div>
@@ -227,7 +196,9 @@ const Header: React.FC<{ type?: string }> = ({ type }) => {
                 )}
               </div>
               <div className="headerSearchItem">
-                <button className="headerBtn">Search</button>
+                <button className="headerBtn" onClick={handleSearch}>
+                  Search
+                </button>
               </div>
             </div>
           </>

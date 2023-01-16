@@ -1,0 +1,92 @@
+.searchItem {
+  border: 1px solid lightgray;
+  padding: 10px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+.sIImg {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+}
+.sIDesc {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 2;
+}
+.sITitle {
+  font-size: 20px;
+  color: #0071c2;
+}
+.sIDistance {
+  font-size: 12px;
+}
+.sITaxiOp {
+  font-size: 12px;
+  background-color: #008009;
+  color: white;
+  width: max-content;
+  padding: 3px;
+  border-radius: 5px;
+}
+.sISubtitle {
+  font-size: 12px;
+  font-weight: bold;
+}
+.sIFeatures {
+  font-size: 12px;
+}
+.sICancelOp {
+  font-size: 12px;
+  color: #008009;
+  font-weight: bold;
+}
+.sICancelOpSubtitle {
+  font-size: 12px;
+  color: #008009;
+}
+.sIDetails {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.sIRating {
+  display: flex;
+  justify-content: space-between;
+}
+.sIRating > span {
+  font-weight: 500;
+}
+.sIRating > button {
+  background-color: #003580;
+  color: white;
+  padding: 5px;
+  font-weight: bold;
+}
+.sIDetailTexts {
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.sIPrice {
+  font-size: 24px;
+}
+.sITaxOp {
+  font-size: 12px;
+  color: gray;
+}
+.sICheckButton {
+  background-color: #0071c2;
+  color: white;
+  font-weight: bold;
+  padding: 10px 5px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
